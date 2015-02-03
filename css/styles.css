@@ -1,0 +1,51 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#actual_InformacionPersonal, #actual_InformacionAcademica, #actual_InformacionProfesional, #actual_resumen{
+    font-weight:bold;
+    text-align: right;
+}
+
+table{
+    margin: auto;
+}
+
+th{
+    text-align: left;
+    font-weight: bold;
+}
+
+td{
+    text-align: left;
+}
+
+#tablaResumen{
+    text-align: center;
+    border: 2px solid #cccccc;
+    box-shadow: 4px 8px 20px 2px gray;
+}
+
+#encabezado_1, #encabezado_2, #encabezado_3{
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #333;
+}
+
+#tablaResumen tr, #tablaResumen th, #tablaResumen td{
+    border: 1px solid #cccccc;
+}
+
+#tablaResumen th{
+    width: 210px;
+}
+
+#tablaResumen td{
+    width: 400px;
+}
+
+#formEnviarCorreo{
+    padding: 10px 20px;
+}

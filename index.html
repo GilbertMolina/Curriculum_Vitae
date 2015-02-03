@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Primer Examen Parcial - Programaci&oacute;n 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shorcut icon" href="images/favicon.ico" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="css/jquery.mobile-1.4.2/jquery-1.9.1.min.js"></script>
+        <script src="css/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" src="js/sisyphus/sisyphus.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+    </head>
+    <body>
+	<!--InformacionPersonal-->
+        <div data-role="page" id="informacionPersonal">
+            <!--Header-->
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a href="#panelIzquierdo_InformacionPersonal" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-btn-icon-notext ui-icon-bars"></a>
+                <h1>Informaci&oacute;n Personal</h1>
+            </div>
+            <div data-role="panel" id="panelIzquierdo_InformacionPersonal" data-theme="b" data-display="reveal" data-dismissible="true">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" data-theme="a">
+                        <h1>Perfil Profesional</h1>
+                    </li>
+                    <li id="actual_InformacionPersonal">Informaci&oacute;n Personal</li>
+                    <li>
+                        <a href="#informacionAcademica" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Acad&eacute;mica</a>
+                    </li>
+                    <li>
+                        <a href="#informacionProfesional" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Profesional</a>
+                    </li>
+                    <li>
+                        <a href="#resumen" data-transition="slidedown" onclick="actualizarDatos()">Resumen</a>
+                    </li>
+                </ul>
+            </div>
+        <!--Fin del Header-->
+        <!--Content-->
+            <div data-role="main" class="ui-content" id="content_InformacionPersonal">
+                <form method="post" action="#" id="formulario_InformacionPersonal">
+                    <table>
+                        <tr>
+                            <th><label for="nombreCompleto">Nombre Completo:</label></th>
+                            <td><input type="text" name="nombreCompleto" id="nombreCompleto" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="fechaNacimiento">Fecha de Nacimiento:</label></th>
+                            <td><input type="date" name="fechaNacimiento" id="fechaNacimiento" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="foto">Foto:</label></th>
+                            <td><input type="file" name="foto" id="foto" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="profesion">Profesi&oacute;n:</label></th>
+                            <td><input type="text" name="profesion" id="profesion" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="telefono">Tel&eacute;fono:</label></th>
+                            <td><input type="tel" name="telefono" id="telefono" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="email">Email:</label></th>
+                            <td><input type="email" name="email" id="email" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="escolaridad">Escolaridad:</label></th>
+                            <td>
+                                <select name="escolaridad" id="escolaridad" data-native-menu="false">
+                                    <option value="pri">Primaria</option>
+                                    <option value="sec">Secundaria</option>
+                                    <option value="bach">Bachillerato Universitario</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label>Estado civil:</label></th>
+                            <td>
+                                <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                    <input type="radio" name="radio-action" id="soltero" value="Soltero" checked="checked">
+                                    <label for="soltero">Soltero</label>
+                                    <input type="radio" name="radio-action" id="casado" value="Casado">
+                                    <label for="casado">Casado</label>
+                                    <input type="radio" name="radio-action" id="divorciado" value="Divorciado">
+                                    <label for="divorciado">Divorciado</label>
+                                    <input type="radio" name="radio-action" id="unionLibre" value="Uni&oacute;n Libre">
+                                    <label for="unionLibre">Uni&oacute;n Libre</label>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="direccion">Direcci&oacute;n:</label></th>
+                            <td><textarea name="direccion" id="direccion" cols="50" rows="2"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th><label for="nivelIngles">Nivel de Ingl&eacute;s:</label></th>
+                            <td><input type="range" name="nivelIngles" id="nivelIngles" data-highlight="true" min="0" max="100" value="50"></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><button type="reset" name="reset" id="reset_InformacionPersonal" value="reset" data-theme="b">Limpiar campos</button></td>                                
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        <!--Fin del Content-->
+        <!--Footer-->
+            <div data-role="footer" data-theme="a" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#informacionAcademica" data-transition="slide" data-icon="carat-r" data-theme="b" onclick="actualizarDatos()">Siguiente</a></li>
+                    </ul>
+                </div>
+            </div>
+        <!--Fin del Footer-->
+        </div>
+	<!--Fin de InformacionPersonal-->
+	<!--InformacionAcademica-->
+        <div data-role="page" id="informacionAcademica">
+        <!--Header-->
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a href="#panelIzquierdo_InformacionAcademica" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-btn-icon-notext ui-icon-bars"></a>
+                <h1>Informaci&oacute;n Acad&eacute;mica</h1>
+            </div>
+            <div data-role="panel" id="panelIzquierdo_InformacionAcademica" data-theme="b" data-display="reveal" data-dismissible="true">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" data-theme="a">
+                        <h1>Perfil Profesional</h1>
+                    </li>
+                    <li>
+                        <a href="#informacionPersonal" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Personal</a>
+                    </li>
+                    <li id="actual_InformacionAcademica">Informaci&oacute;n Acad&eacute;mica</li>
+                    <li>
+                        <a href="#informacionProfesional" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Profesional</a>
+                    </li>
+                    <li>
+                        <a href="#resumen" data-transition="slidedown" onclick="actualizarDatos()">Resumen</a>
+                    </li>
+                </ul>
+            </div>
+        <!--Fin del Header-->
+        <!--Content-->
+            <div data-role="main" class="ui-content" id="content_InformacionAcademica">
+                <form method="post" action="#" id="formulario_InformacionAcademica">
+                    <div data-role="collapsible-set" data-theme="" data-content-theme="a">
+                        <div data-role="collapsible">
+                            <h3>Educaci&oacute;n Primaria</h3>
+                            <table>
+                                <tr>
+                                    <th><label for="tituloObtenidoPrimaria">T&iacute;tulo Obtenido:</label></th>
+                                    <td><textarea name="tituloObtenidoPrimaria" id="tituloObtenidoPrimaria" cols="50" rows="2"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="lugarPrimaria">Lugar:</label></th>
+                                    <td><textarea name="lugarPrimaria" id="lugarPrimaria" cols="50" rows="2"></textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div data-role="collapsible">
+                            <h3>Educaci&oacute;n Secundaria</h3>
+                            <table>
+                                <tr>
+                                    <th><label for="tituloObtenidoSecundaria">T&iacute;tulo Obtenido:</label></th>
+                                    <td><textarea name="tituloObtenidoSecundaria" id="tituloObtenidoSecundaria" cols="50" rows="2"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="lugarSecundaria">Lugar:</label></th>
+                                    <td><textarea name="lugarSecundaria" id="lugarSecundaria" cols="50" rows="2"></textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div data-role="collapsible">
+                            <h3>Educaci&oacute;n Universitaria</h3>
+                            <table>
+                                <tr>
+                                    <th><label for="tituloObtenidoUniversitario">T&iacute;tulo Obtenido:</label></th>
+                                    <td><textarea name="tituloObtenidoUniversitario" id="tituloObtenidoUniversitario" cols="50" rows="2"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="lugarUniversitario">Lugar:</label></th>
+                                    <td><textarea name="lugarUniversitario" id="lugarUniversitario" cols="50" rows="2"></textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div data-role="collapsible">
+                            <h3>Otros estudios</h3>
+                            <table>
+                                <tr>
+                                    <th><label for="tituloObtenidoOtrosEstudios">T&iacute;tulo Obtenido:</label></th>
+                                    <td><textarea name="tituloObtenidoOtrosEstudios" id="tituloObtenidoOtrosEstudios" cols="50" rows="2"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="lugarOtrosEstudios">Lugar:</label></th>
+                                    <td><textarea name="lugarOtrosEstudios" id="lugarOtrosEstudios" cols="50" rows="2"></textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br />
+                        <button type="reset" name="reset" id="reset_InformacionAcademica" value="reset" data-theme="b">Limpiar campos</button>
+                    </div>
+                </form>
+            </div>
+        <!--Fin del Content-->
+        <!--Footer-->
+            <div data-role="footer" data-theme="a" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#informacionPersonal" data-transition="flip" data-icon="carat-l" data-theme="b" onclick="actualizarDatos()">Anterior</a></li>
+                        <li><a href="#informacionProfesional" data-transition="slide" data-icon="carat-r" data-theme="b" onclick="actualizarDatos()">Siguiente</a></li>
+                    </ul>
+                </div>
+            </div>
+        <!--Fin del Footer-->
+        </div>
+	<!--Fin de InformacionAcademica-->
+	<!--InformacionProfesional-->
+        <div data-role="page" id="informacionProfesional">
+        <!--Header-->
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a href="#panelIzquierdo_InformacionProfesional" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-btn-icon-notext ui-icon-bars"></a>
+                <h1>Informaci&oacute;n Profesional</h1>
+            </div>
+            <div data-role="panel" id="panelIzquierdo_InformacionProfesional" data-theme="b" data-display="reveal" data-dismissible="true">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" data-theme="a">
+                        <h1>Perfil Profesional</h1>
+                    </li>
+                    <li>
+                        <a href="#informacionPersonal" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Personal</a>
+                    </li>
+                    <li>
+                        <a href="#informacionAcademica" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Acad&eacute;mica</a>
+                    </li>
+                    <li id="actual_InformacionProfesional">Informaci&oacute;n Profesional</li>
+                    <li>
+                        <a href="#resumen" data-transition="slidedown" onclick="actualizarDatos()">Resumen</a>
+                    </li>
+                </ul>
+            </div>
+        <!--Fin del Header-->
+        <!--Content-->
+            <div data-role="main" class="ui-content" id="content_InformacionProfesional">
+                <form method="post" action="#" name="formulario" id="formulario_InformacionProfesional">
+                    <table>
+                        <tr>
+                            <th><label for="trabajoAnterior">Trabajo Anterior:</label></th>
+                            <td><input type="text" name="trabajoAnterior" id="trabajoAnterior" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="fechaInicial">Fecha Inicial:</label></th>
+                            <td><input type="date" name="fechaInicial" id="fechaInicial" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="laborandoActualmente">Laborando Actualmente:</label></th>
+                            <td><input type="checkbox" data-role="flipswitch" name="laborandoActualmente" id="laborandoActualmente" data-on-text="Si" data-off-text="No" onchange="deshabilitarFechaFinal()"></td>
+                        </tr>
+                        <tr id="contenedorFechaFinal">
+                            <th><label for="fechaFinal">Fecha Final:</label></th>
+                            <td><input type="date" name="fechaFinal" id="fechaFinal" data-clear-btn="true"></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><button type="reset" name="reset" id="reset" value="reset" data-theme="b">Limpiar campos</button></td>                                
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        <!--Fin del Content-->
+        <!--Footer-->
+            <div data-role="footer" data-theme="a" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#informacionAcademica" data-transition="flip" data-icon="carat-l" data-theme="b" onclick="actualizarDatos()">Anterior</a></li>
+                        <li><a href="#resumen" data-transition="slide" data-icon="carat-r" data-theme="b" onclick="actualizarDatos()">Siguiente</a></li>
+                    </ul>
+                </div>
+            </div>
+        <!--Fin del Footer-->
+        </div>
+	<!--Fin de InformacionProfesional-->
+	<!--Resumen-->
+        <div data-role="page" id="resumen">
+        <!--Header-->
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a href="#panelIzquierdo_resumen" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-btn-icon-notext ui-icon-bars"></a>
+                <h1>Resumen</h1>
+                <a href="#panelDerecho_resumen" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-btn-icon-notext ui-icon-grid"></a>
+            </div>
+            <div data-role="panel" id="panelIzquierdo_resumen" data-theme="b" data-display="reveal" data-dismissible="true">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" data-theme="a">
+                        <h1>Perfil Profesional</h1>
+                    </li>
+                    <li>
+                        <a href="#informacionPersonal" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Personal</a>
+                    </li>
+                    <li>
+                        <a href="#informacionAcademica" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Acad&eacute;mica</a>
+                    </li>
+                    <li>
+                        <a href="#informacionProfesional" data-transition="slidedown" onclick="actualizarDatos()">Informaci&oacute;n Profesional</a>
+                    </li>
+                    <li id="actual_resumen">Resumen</li>
+                </ul>
+            </div>
+            <div data-role="panel" id="panelDerecho_resumen"  data-position="right" data-theme="b" data-display="reveal" data-dismissible="true">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" data-theme="a">
+                        <h1>Opciones de Resumen</h1>
+                    </li>
+                    <li>
+                        <a href="#popupCorreo" data-transition="pop" data-position-to="window" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-mail ui-btn-icon-left ui-btn-b">Enviar por correo</a>
+                        <div data-role="popup" id="popupCorreo" data-theme="b" class="ui-corner-all">
+                            <form name="formularioEnviarCorreo" id="formularioEnviarCorreo" method="POST">
+                                <div id="formEnviarCorreo">
+                                    <h3>Digite los datos para enviar por correo</h3>
+                                    <br />
+                                    <table>
+                                        <tr>
+                                            <th><label for="paraCorreo">Para:</label></th>
+                                            <td><input type="text" name="paraCorreo" id="paraCorreo" placeholder="Correo" data-theme="a" data-clear-btn="true"></td>
+                                        </tr>
+                                        <tr>
+                                            <th><label for="ccCorreo">CC:</label></th>
+                                            <td><input type="text" name="ccCorreo" id="ccCorreo" placeholder="CC" data-theme="a" data-clear-btn="true"></td>
+                                        </tr>
+                                        <tr>
+                                            <th><label for="ccoCorreo">CCO:</label></th>
+                                            <td><input type="text" name="ccoCorreo" id="ccoCorreo" placeholder="CCO" data-theme="a" data-clear-btn="true"></td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <td><button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-btn-icon-left ui-icon-check" onclick="enviarCorreo()">Enviar</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#generarPDF" data-transition="pop" data-position-to="window" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-eye ui-btn-icon-left ui-btn-b" >Generar PDF</a>
+                        <div data-role="popup" id="generarPDF" data-theme="b" class="ui-content">
+                            <p>Esta funci&oacute;n no fue implementada</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        <!--Fin del Header-->
+        <!--Content-->
+            <div data-role="main" class="ui-content" id="content_resumen">
+                <form method="post" action="#" id="formulario_resumen">
+                    <table id="tablaResumen">
+                    <!--Informacion Personal-->
+                        <tr>
+                            <th colspan="2" id="encabezado_1">Informaci&oacute;n Personal</th>
+                        </tr>
+                        <tr>
+                            <th>Nombre completo:</th>
+                            <td id="nuevoNombreCompleto"></td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de nacimiento:</th>
+                            <td id="nuevaFechaNacimiento"></td>
+                        </tr>
+                        <tr>
+                            <th>Profesi&oacute;n:</th>
+                            <td id="nuevaProfesion"></td>
+                        </tr>
+                        <tr>
+                            <th>Tel&eacute;fono:</th>
+                            <td id="nuevoTelefono"></td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td id="nuevoEmail"></td>
+                        </tr>
+                        <tr>
+                            <th>Escolaridad:</th>
+                            <td id="nuevaEscolaridad"></td>
+                        </tr>
+                        <tr>
+                            <th>Estado civil:</th>
+                            <td id="nuevoEstadoCivil"></td>
+                        </tr>
+                        <tr>
+                            <th>Direcci&oacute;n:</th>
+                            <td id="nuevaDireccion"></td>
+                        </tr>
+                        <tr>
+                            <th>Nivel de Ingl&eacute;s:</th>
+                            <td id="nuevoNivelIngles"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br /></td>
+                        </tr>
+                    <!--Informacion Academica-->
+                        <tr>
+                            <th colspan="2" id="encabezado_2">Informaci&oacute;n Academica</th>
+                        </tr>
+                        <tr>
+                            <th>T&iacute;tulo de Primaria:</th>
+                            <td id="nuevoTituloPrimaria"></td>
+                        </tr>
+                        <tr>
+                            <th>Lugar:</th>
+                            <td id="nuevoLugarTituloPrimaria"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br /></td>
+                        </tr>
+                        <tr>
+                            <th>T&iacute;tulo de Secundaria:</th>
+                            <td id="nuevoTituloSecundaria"></td>
+                        </tr>
+                        <tr>
+                            <th>Lugar:</th>
+                            <td id="nuevoLugarTituloSecundaria"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br /></td>
+                        </tr>
+                        <tr>
+                            <th>T&iacute;tulo Universitario:</th>
+                            <td id="nuevoTituloUniversitario"></td>
+                        </tr>
+                        <tr>
+                            <th>Lugar:</th>
+                            <td id="nuevoLugarTituloUniversitario"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br /></td>
+                        </tr>
+                        <tr>
+                            <th>Otros T&iacute;tulos:</th>
+                            <td id="nuevoOtrosTitulos"></td>
+                        </tr>
+                        <tr>
+                            <th>Lugar:</th>
+                            <td id="nuevoLugarOtrosTitulos"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br /></td>
+                        </tr>
+                    <!--Informacion Profesional-->
+                        <tr>
+                            <th colspan="2" id="encabezado_3">Informaci&oacute;n Profesional</th>
+                        </tr>
+                        <tr>
+                            <th>Trabajo anterior:</th>
+                            <td id="nuevoTrabajoAnterior"></td>
+                        </tr>
+                        <tr>
+                            <th>Fecha Inicial:</th>
+                            <td id="nuevaFechaInicial"></td>
+                        </tr>
+                        <tr>
+                            <th>Laborando actualmente:</th>
+                            <td id="nuevoLaborandoActualmente"></td>
+                        </tr>
+                        <tr>
+                            <th>Fecha Final:</th>
+                            <td id="nuevaFechaFinal"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        <!--Fin del Content-->
+        <!--Footer-->
+            <div data-role="footer" data-theme="a" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#informacionProfesional" data-transition="flip" data-icon="carat-l" data-theme="b" onclick="actualizarDatos()">Anterior</a></li>
+                    </ul>
+                </div>
+            </div>
+        <!--Fin del Footer-->
+        </div>
+	<!--Fin de Resumen-->
+    </body>
+</html>
